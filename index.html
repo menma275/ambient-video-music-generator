@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambient Music Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="ambient-bg"></canvas>
+
+    <div class="sidebar">
+      <div class="controls">
+        <button id="toggleButton">
+          <div class="icon-container"></div>
+        </button>
+      </div>
+
+      <div class="control-panel">
+        <div class="control-group">
+            <h3>Master Settings</h3>
+            <div class="control-item">
+                <label for="cameraSource">Camera</label>
+                <select id="cameraSource">
+                    <option value="">Default Camera</option>
+                </select>
+            </div>
+            <div class="control-item">
+                <label for="masterVolume">Master Volume</label>            <input
+              type="range"
+              id="masterVolume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.5"
+            />
+          </div>
+          <div class="control-item">
+            <label for="videoBrightness">Video Brightness</label>
+            <input
+              type="range"
+              id="videoBrightness"
+              min="0.5"
+              max="2"
+              step="0.1"
+              value="1.0"
+            />
+          </div>
+        </div>
+
+        <div class="control-group">
+            <h3>Musicality</h3>
+            <div class="control-item">
+                <label for="moodType">Mood</label>
+                <select id="moodType">
+                    <option value="ambient" selected>Ambient (Soft)</option>
+                    <option value="pulse">Pulse (Rhythmic)</option>
+                    <option value="shimmer">Shimmer (Bright)</option>
+                    <option value="deep">Deep (Drone)</option>
+                </select>
+            </div>
+            <div class="control-item">
+                <label for="scaleType">Scale</label>            <select id="scaleType">
+              <option value="major" selected>Major Pentatonic</option>
+              <option value="minor">Minor Pentatonic</option>
+              <option value="chromatic">Chromatic</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label for="rhythmDensity">Rhythm Density</label>
+            <input
+              type="range"
+              id="rhythmDensity"
+              min="0.1"
+              max="2.0"
+              step="0.1"
+              value="1.0"
+            />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Audio Effects</h3>
+          <div class="control-item">
+            <label for="reverbMix">Reverb Mix</label>
+            <input
+              type="range"
+              id="reverbMix"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.5"
+            />
+          </div>
+          <div class="control-item">
+            <label for="delayMix">Delay Mix</label>
+            <input
+              type="range"
+              id="delayMix"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.4"
+            />
+          </div>
+          <div class="control-item">
+            <label for="delayTime">Delay Time</label>
+            <input
+              type="range"
+              id="delayTime"
+              min="0.1"
+              max="2.0"
+              step="0.1"
+              value="0.5"
+            />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Synth Settings</h3>
+          <div class="control-item">
+            <label for="oscType">Waveform</label>
+            <select id="oscType">
+              <option value="triangle" selected>Triangle</option>
+              <option value="sine">Sine</option>
+              <option value="square">Square</option>
+              <option value="sawtooth">Sawtooth</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label for="filterFreq">Base Filter</label>
+            <input
+              type="range"
+              id="filterFreq"
+              min="200"
+              max="5000"
+              step="100"
+              value="2000"
+            />
+          </div>
+          <div class="control-item checkbox-item">
+            <input type="checkbox" id="highOctave" checked />
+            <label for="highOctave">Enable High Octave</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <video
+        id="webcam"
+        autoplay
+        playsinline
+        muted
+        style="display: none"
+      ></video>
+      <canvas id="overlay" style="display: none"></canvas>
+    </div>
+
+    <script src="color.js"></script>
+    <script src="audio.js"></script>
+    <script src="video.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
